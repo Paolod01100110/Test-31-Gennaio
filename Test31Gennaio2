@@ -1,0 +1,16 @@
+def manage_string_lengths():
+    strings = []
+    previous_length = 0
+    
+    while True:
+        user_input = input("Inserisci una stringa (o premi Invio per terminare): ").strip()
+        if len(user_input) > 0 and len(user_input) > previous_length:
+            strings.append(user_input)
+            previous_length = len(user_input)
+        else:
+            break
+    
+    print("Stringhe inserite:", ", ".join(strings))
+    print(f"Numero totale di stringhe inserite: {len(strings)}")
+
+manage_string_lengths()
