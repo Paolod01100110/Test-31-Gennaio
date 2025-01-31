@@ -1,0 +1,23 @@
+def classify_and_store():
+    n = int(input("Inserisci il numero di iterazioni: "))
+    numbers, strings, others = [], [], []
+    for _ in range(n):
+        user_input = input("Inserisci un valore: ")
+        if user_input.replace('.', '', 1).isdigit():
+            numbers.append(float(user_input) if '.' in user_input else int(user_input))
+        elif user_input.isalpha():
+            strings.append(user_input)
+        else:
+            others.append(user_input)
+    return numbers, strings, others
+
+def print_lists(numbers, strings, others):
+    while True:
+        choice = input("Quale lista vuoi stampare? (numeri, stringhe, altri, tutte, esci): ").lower()
+        if choice == "esci":
+            break
+        print({"numeri": numbers, "stringhe": strings, "altri": others, "tutte": (numbers, strings, others)}.get(choice, "Scelta non valida."))
+
+numbers, strings, others = classify_and_store()
+print_lists(numbers, strings, others)
+
