@@ -1,0 +1,33 @@
+users = {}
+
+def save_user(username, password, data):
+    if username in users:
+        print("Utente già esistente. Usa la funzione di modifica.")
+        return
+    users[username] = {"password": password, "data": data}
+    print("Utente salvato con successo.")
+
+def login(username, password):
+    if username in users and users[username]["password"] == password:
+        print("Login riuscito.")
+        return True
+    print("Credenziali errate.")
+    return False
+
+def modify_user(username, password, new_data):
+    if username in users and users[username]["password"] == password:
+        users[username]["data"] = new_data
+        print("Dati aggiornati con successo.")
+    else:
+        print("Modifica non consentita. Assicurati di essere registrato e di aver effettuato il login correttamente.")
+
+def menu():
+    while True:
+        print("\nMenu:")
+        print("1. Registrazione utente")
+        print("2. Login utente")
+        print("3. Modifica dati utente")
+        print("4. Esci")
+        scelta = input("Seleziona un'opzione: ")
+    
+menu()
